@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cloud-based Attendance System</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Cloud-based Online Attendance System</h1>
+    </header>
+    <div class="bg-image"></div>
+    <br>
+    <form id="attendanceForm">
+        <h4>Please Enter all required details.</h4>
+        <label for="studentName" class="student">Student Name:</label>
+        <input type="text" id="studentName" class="student" name="studentName" required>
+        <br>
+        <label for="studentID" class="student">Student ID:</label>
+        <input type="text" id="studentID" class="student" name="studentID" required>
+        <br>
+        <label for="studentType" class="student">Are you a Student or Teacher?</label>
+        <table id="table">
+            <tr>
+                <td class="student">
+                    <input type="radio" class="radio" name="studentType" value="Student">
+                </td>
+                <td class="student">
+                    Student
+                </td>
+            </tr>
+            <tr>
+                <td class="student">
+                    <input type="radio" class="radio" name="studentType" value="Teacher">
+                </td>
+                <td class="student">
+                    Teacher
+                </td>
+            </tr>
+            <tr>
+                <td class="student">
+                    <input type="radio" class="radio" name="studentType" value="Other">
+                </td>
+                <td class="student">
+                    Other
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <button type="submit" onclick="showDialogue()">Mark Attendance</button>
+    </form>
+
+    <div id="dialogueBox" class="dialogue-box">
+        <h2>Your attendance has been recorded</h2>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
