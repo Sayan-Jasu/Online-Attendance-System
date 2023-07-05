@@ -1,6 +1,8 @@
-function showDialogue() {
+function showDialogue(message) {
     document.getElementById('attendanceForm').style.display = 'none';
-    document.getElementById('dialogueBox').style.display = 'block';
+    const dialogueBox = document.getElementById('dialogueBox');
+    dialogueBox.style.display = 'block';
+    dialogueBox.textContent = message;
 }
 
 document.getElementById('attendanceForm').addEventListener('submit', function(event) {
@@ -17,9 +19,7 @@ document.getElementById('attendanceForm').addEventListener('submit', function(ev
         return;
     }
 
-    // Send attendance data to the server using an AJAX request or fetch API
-    // Replace 'YOUR_BACKEND_ENDPOINT' with the appropriate URL to connect to your backend
-    fetch('YOUR_BACKEND_ENDPOINT', {
+    fetch('/attendance', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,17 +28,13 @@ document.getElementById('attendanceForm').addEventListener('submit', function(ev
         })
         .then(response => response.json())
         .then(data => {
-            // Handle the response from the server (e.g., display success message)
-            console.log(data);
-            // Show the dialogue box indicating successful attendance recording
-            document.getElementById('dialogueBox').style.display = 'block';
+            console.log('Attendance data sent successfully');
+            showDialogue('Attendance recorded successfully');
         })
         .catch(error => {
-            // Handle any errors that occur during the request
-            console.error(error);
+            console.error('Error sending attendance data:', error);
+            showDialogue('Error recording attendance. Please try again.');
         });
-
-    // Reset the form after submission
     studentNameInput.value = '';
     studentIDInput.value = '';
 });
